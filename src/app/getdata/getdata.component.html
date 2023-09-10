@@ -1,0 +1,36 @@
+<div>
+    <div>
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            userId
+                        </th>
+
+                        <th>
+                            id
+                        </th>
+
+                        <th>
+                            title 
+                        </th>
+
+                        <th>
+                            body
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let post of arrayPost">
+                        <td>{{post.userId}}</td>
+                        <td><a [routerLink]="['/postdetails' ,post.id]">{{post.id}}</a></td>
+                        <td>{{post.title}}</td>
+                        <td>{{post.body}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

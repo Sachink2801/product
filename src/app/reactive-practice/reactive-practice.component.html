@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="row justify content-center py-5">
+        <div class="col-md-6 rounded shadow">
+            <form [formGroup]="myReactiveForm" (ngSubmit)="OnSubmit()">
+
+         <div formGroupName="userDetails">
+             <div class="form-group">
+             <input type="text" id="username" class="form-control" formControlName="username" placeholder="enter username">
+             <small class="text-danger" *ngIf="!myReactiveForm.get('userDetails.username').valid && myReactiveForm.get('userDetails.username').touched">enter username
+               <small *ngIf="myReactiveForm.get('userDetails.username').errors['required']">Please enter username</small> 
+               <small *ngIf="myReactiveForm.get('userDetails.username').errors['notAllowName']">user name not allow {{myReactiveForm.get('userDetails.username').value}}</small> 
+            </small>
+            </div>
+            <div class="form-group">
+             <input type="email" id="" class="form-control" formControlName="email" placeholder="enter valid email">
+             <small class="text-danger" *ngIf="!myReactiveForm.get('userDetails.email').valid && myReactiveForm.get('userDetails.email').touched">
+                <!-- <small *ngIf="myReactiveForm.get('userDetails.email').errors['emailNotAllowed']">Email not allow {{myReactiveForm.get('userDetails.email').value}}</small> -->
+                Please enter valid email
+             </small>
+
+            </div>
+        </div>  
+              
+            <div class="form-group">
+                <label for="course">Select course</label>
+                <select class="form-control" id="couse" formControlName="course" >
+                    <option value="Angular">Angular</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Html">Html</option>
+                </select>
+            </div>
+
+            <div class="form-group" >
+                <div class="custom-control custom-radio" *ngFor="let gender of genders">
+                <input class="custom-control-input" id="{{gender.id}}" value="{{gender.value}}" type="radio" formControlName="gender">
+                <label class="custom-control-label" for="{{gender.id}}">{{gender.value}}</label>
+            </div>
+            </div>
+
+             <div class="form group" formArrayName="skills">
+              <label>skills</label>
+              <ng-container *ngFor="let skill of this.myReactiveForm.get('skills').controls ; index as i">
+                <input text="" class="form-control mt-2" placeholder="Add skills" formControlName="{{i}}">
+              </ng-container>
+              <button class="btn btn-light btn-sm mt-4 btn-add" (click)="onAddSkills()" ><i>+</i>Add Skills</button>
+              <button class="btn btn-denger mt-4" (click)="removeContact()">Remove</button>
+            </div>
+               <button type="submit" [disabled]="!myReactiveForm.valid" class="btn btn-success mt-4">submit</button>
+            </form>
+        </div>
+
+        
+
+        <div class="row.justify-content-center mt-2" *ngIf="submitted">
+            <div class="col-md-6.rounded-shadow-py-4">
+                <h3>Reactive form data</h3>
+                <p>User name :<strong>{{myReactiveForm.get('userDetails.username').value}}</strong></p>
+                <p>Email id :<strong>{{myReactiveForm.get('userDetails.email').value}}</strong></p>
+                <p>Selected course :<strong>{{myReactiveForm.get('course').value}}</strong></p>
+                <p>Gender :<strong>{{myReactiveForm.get('gender').value}}</strong></p>
+                <p>skills : <strong>{{myReactiveForm.get('skills').value}}</strong></p>
+            </div>
+        
+    </div>
+
+    
+

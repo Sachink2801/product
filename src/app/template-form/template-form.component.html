@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 rounded shadow py-5">
+
+          <form (ngSubmit)="OnSubmit(myForm)" #myForm="ngForm" >
+            <div ngModelGroup="userDetails" #userDetails="ngModelGroup">
+            <div class="form-group">
+              <label name="username">username</label>
+              <input type="text" name="username" id="username" class="form-control" placeholder="enter username" [(ngModel)]="username" required>
+              <small *ngIf="username">user name :{{username}}</small>
+            </div>
+            <div class="form-group">
+                <label name="email">email</label>
+                <input id="email" name="email" type="email" email class="form-control" #email="ngModel" placeholder="abcd@gmail.com" ngModel required> 
+                <small class="text-danger" *ngIf="!email.valid && email.touched">Enter valid email</small>
+            </div>
+            <small class="text-danger" *ngIf="!userDetails.valid && userDetails.touched">Please enter valid details</small>
+            </div>
+             
+            <div class="form-group">
+                <label for="course">Select course</label>
+                <select name="course" id="course" class="form-control" [ngModel]="defaultValue">
+                <option value="Angular">Angular</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="SQL">SQL</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+              <div *ngFor="let gender of genders" class="custom-control custom-radio">
+              <input type="radio" name="gender" id="{{gender.id}}" value="{{gender.value}}" [ngModel]="defaultGender" class="custom-control-input">
+              <label for="{{gender.id}}" class="custom-control-label">{{gender.value}}</label>
+            </div>
+            </div>
+
+            <div class="form-group">
+              <label for="date" class="from-control">Date of Birth </label>
+              <input type="date" name="date" class="form-control" ngModel required>
+            </div>
+
+            <button type="submit" [disabled]="!myForm.valid" class="btn btn-primary" >Submit</button>
+
+            <div class="row justify-content-center mt-4" *ngIf="submitted">
+                <div class="col-md-6 rounded shadow py-4">
+                  <h2>Form Data</h2>
+                  <p>username: <strong>{{employee.username}}</strong></p>
+                  <p>Product : <strong>{{employee.course}}</strong></p>
+                  <p>email: <strong>{{employee.email}}</strong></p>
+                  <p>Gender: <strong>{{employee.gender}}</strong></p>
+            </div>
+            </div>
+
+          </form>
+        </div>
+    </div>
+</div>

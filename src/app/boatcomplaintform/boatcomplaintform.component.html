@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 rounded shadow py-5">
+            <form (ngSubmit)="OnSubmit(myForm)" #myForm="ngForm"> 
+                <h3>Register Complaints</h3>
+                
+                <div class="form-group" style="margin-top: 30px;">
+                <label for="product">Product Group</label>
+                <select type="text" id="product_group" name="product_group" class="form-control" placeholder="Select Product Group" ngModel required>
+                <option value="1">Headphones</option>
+                <option value="2">Spiker</option>
+                <option value="3">Watch</option>
+                <option value="4">Cable</option>
+            </select>
+                </div>
+                <div ngModelGroup="productDetails" #productDetails="ngModelGroup">
+                <div class="form-group" style="margin-top: 20px;">
+                 <label>Product</label>
+                 <input type="text" name="product" placeholder="select product you purchase" class="form-control" [(ngModel)]="product" required >
+                </div>
+            </div>
+
+                <div class="form-group" style="margin-top: 20px;">
+                <label for="email">Email_id</label>
+                <input type="email" id="email" name="email" #email class="form-control" placeholder="abcd@gmail.com" email ngModel required>
+                </div>
+
+                <div class="form-group" style="margin-top: 20px;">
+                <input type="checkbox" id="product_name" name="product_name" ngModel required>
+                "Please ensure that the selected product name matches the one written on the product box"
+                </div>
+
+                <button class="btn btn-danger" type="submit" [disabled]="!myForm.valid" style="margin-right: 20px; border-radius: 25px;" >Submit</button>
+
+                <div class="row justify-content-center mt-4" *ngIf="submitted">
+                    <div class="col-md-6 rounded shadow py-4">
+                       <h2>Form Data</h2>
+                       <p>Product_name: <strong>{{boat.product_group}}</strong></p>
+                       <p>Product : <strong>{{boat.product}}</strong></p>
+                       <p>email: <strong>{{boat.email}}</strong></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

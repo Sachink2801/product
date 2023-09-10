@@ -1,0 +1,20 @@
+.body{
+    width: 100vw;
+    height: 100vh;
+    position:absolute;
+    background:linear-gradient(rgba(12, 180, 227, 0.429),rgba(203, 20, 166, 0.21)),url(src/assets/images/student_login_page.jpg);
+    background-size:cover;
+    /* background: repeat; */
+}
+
+.formClass{
+    background-color: rgba(0, 0, 0, 0.358);
+    color: white;
+    margin-top: 30px;
+    margin-left: 150px;
+}
+
+input.ng-invalid {
+    border: 1px solid red;
+    box-shadow: 0 0 13px #ff9900;
+}

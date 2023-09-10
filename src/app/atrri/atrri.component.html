@@ -1,0 +1,52 @@
+<div [ngStyle]="{'color':colorVal , 'background-color':'#ddd'}">
+    I am learning ANGULAR 8
+</div>
+
+<h4>Ng Class</h4>
+
+<ul *ngFor="let person of people">
+    <li [ngClass]="{
+       'text-success': person.country === 'INDIA',
+        'text-primary': person.country ==='USA' ,
+       'text-danger': person.country === 'PAKISTAN'
+       
+    }">
+
+    {{person.name}} ({{person.country}})
+    </li>
+    
+</ul>
+
+
+<p>Normal para</p>
+<p appCustdir> custom para</p>
+<div appCustdir> custom dir div</div>
+
+
+<!-- <div style="margin-left:300px;">
+    <input type="text" name="" id="" #uusername (keyup.enter)="show(uusername.value)">
+    </div>
+    <div>
+        {{uname}}
+    </div>  -->
+
+    <!-- <div style="margin-left: 300px;">
+        <input type="text" name="" id="" #uusername>
+       <button (click)="show(uusername.value)">SHOW</button>
+    </div>
+
+    <div>
+        {{uname}}
+    </div> -->
+
+    <!-- <div style="margin-left: 300px;">
+        <input type="" name="" id="" (keyup.enter)="show($event)">
+    </div> -->
+
+    <div style="margin-left: 300px;">
+        <input type="text" name="" id="" #uuserName placeholder="search">
+        <button (click)="show(uuserName.value)">Click</button>
+    </div>
+    <div>
+        {{uname}}
+    </div>

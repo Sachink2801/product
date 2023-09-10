@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row justify-content-center ">
+        <div class="col-md-6 rounded shodow py-5">
+          <form  [formGroup]="myReactiveForm"  >
+            <input type="text" name="" id="" formControlName="username" placeholder="Enter userName" >
+            <input type="text" name="" id="" formControlName="email" placeholder="Enter valid email">
+            <button class="btn btn-success" (click)="onSubmit()">Submit</button>
+            <input class="btn btn-primary" type="reset" value="Reset" (click)="reset()">
+          </form>
+        </div>
+    </div>
+    <table>
+      
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let user of username ">
+        <td >{{user.username}}</td>
+        <td>{{user.email}}</td>
+        <td><button>Delete</button>
+        <button>Edit</button></td>
+       
+      </tr>
+
+      
+    </table>
+</div>
+

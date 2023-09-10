@@ -1,0 +1,7 @@
+<!-- Enter Ipl team of 2K23 : <input type="text" name="" id="" #team (keyup.enter)="ipl(team.value)">
+<div>
+    {{iplTeam}}
+</div> -->
+<!-- <app-ipl-child [name]="iplTeam"></app-ipl-child> -->
+<div *ngFor="let e of employeeRecord"></div>
+<app-child [employee]="e" (foodEvent)="getChildData($event)"></app-child>
